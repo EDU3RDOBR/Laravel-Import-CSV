@@ -34,6 +34,15 @@
                         </x-button>
                     </form>
 
+                    <div class="flex justify-end mb-4">
+                        <label for="perPage" class="mr-2">Exibir por página:</label>
+                        <select id="perPage" name="perPage" class="border border-gray-300 rounded px-2 py-1">
+                            @foreach($perPageOptions as $option)
+                                <option value="{{ $option }}" @if($option == $perPage) selected @endif>{{ $option }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="overflow-hidden overflow-x-auto min-w-full align-middle sm:rounded-md">
                         <table class="min-w-full divide-y divide-gray-200 border">
                             <thead>
@@ -118,6 +127,14 @@
             checkboxes.forEach(function(checkbox) {
                 checkbox.checked = this.checked;
             }, this);
+        });
+
+        document.getElementById('perPage').addEventListener('change', function() {
+            var selectedValue = this.value;
+            var currentUrl = window.location.href;
+            var urlWithoutParams = currentUrl.split('?')[0];
+            var newUrl = urlWithoutParams + '?perPage=' + selectedValue;
+            window.location.href = newUrl;
         });
     </script>
 

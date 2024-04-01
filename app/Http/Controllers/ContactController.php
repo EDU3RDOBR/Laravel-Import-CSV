@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
     // Exibe a lista de contatos
-    public function index()
+    public function index(Request $request)
     {
-        $contacts = Contact::orderBy('id', 'asc')->paginate(10);
+        $perPageOptions = [10, 50, 100, 200, 500];
+        $perPage = $request->query('perPage', 10);
+        $contacts = Contact::orderBy('id', 'asc')->paginate($perPage);
 
-        return view('contacts.index', compact('contacts'));
+        return view('contacts.index', compact('contacts', 'perPageOptions', 'perPage'));
     }
 
     // Exibe o formulário de edição de um contato específico
