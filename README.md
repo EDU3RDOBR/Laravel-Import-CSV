@@ -1,44 +1,45 @@
-## Laravel CSV Import with Matching Fields
+## Importação de CSV com Correspondência de Campos no Laravel
 
-A demo project with Laravel 8 and Laravel Excel package, to import CSV file and choose the DB fields to match the CSV column.
+Um projeto de demonstração com Laravel 8 e o pacote Laravel Excel, para importar arquivo CSV e escolher os campos do banco de dados para corresponder à coluna do CSV.
 
-### How to use
+### Como usar
 
-Clone this project to your local computer.
+Clone este projeto para o seu computador local.
 
 ```ps
 git clone https://github.com/EDU3RDOBR/Laravel-Import-CSV
+
 ```
 
-Navigate to the project folder.
+Navegue até a pasta do projeto.
 
 ```ps
 cd Laravel-Import-CSV
 ```
 
-Install required packages.
+Instale os pacotes necessários.
 
 ```ps
 composer install
 ```
 
-create new .env file and edit database credentials there.
+Crie um novo arquivo .env e edite as credenciais do banco de dados lá.
 
 ```ps
 cp .env.example .env
 ```
 
-Generate new app key.
+Gere uma nova chave de aplicativo.
 
 ```ps
 php artisan key:generate
 ```
 
-Run migrations. (it has some seeded data for your testing)
+Execute as migrações. (ele contém alguns dados semeados para seus testes)
 
 ```ps
 php artisan migrate --seed
 ```
 
-That's it: launch the main URL
+Isso é tudo: inicie a URL principal.
 
