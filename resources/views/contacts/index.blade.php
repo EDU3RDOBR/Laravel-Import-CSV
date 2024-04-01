@@ -39,7 +39,7 @@
                             <thead>
                                 <tr>
                                     <th class="px-6 py-3 bg-gray-50">
-                                        <span class="text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Select</span>
+                                        <input type="checkbox" id="select-all-checkbox">
                                     </th>
                                     @if($contacts->isNotEmpty() && $contacts->first())
                                         @foreach ($contacts->first()->getAttributes() as $key => $value)
@@ -82,7 +82,7 @@
                     <form id="delete-all-form" method="POST" class="mt-4">
                         @csrf
                         @method('DELETE')
-                        <button type="button" id="delete-all-btn" class="text-red-600 hover:text-red-900 mt-4">Excluir todos selecinados</button>
+                        <button type="button" id="delete-all-btn" class="text-red-600 hover:text-red-900 mt-4">Excluir todos selecionados</button>
                     </form>
 
                     {{ $contacts->links() }}
@@ -111,6 +111,13 @@
             } else {
                 alert('Por favor, selecione pelo menos um contato para excluir.');
             }
+        });
+
+        document.getElementById('select-all-checkbox').addEventListener('change', function() {
+            var checkboxes = document.querySelectorAll('input[name="selected_contacts[]"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = this.checked;
+            }, this);
         });
     </script>
 
