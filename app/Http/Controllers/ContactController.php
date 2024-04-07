@@ -48,20 +48,15 @@ class ContactController extends Controller
     }
 
     // Atualiza os dados de um contato específico
+// Atualiza os dados de um contato específico
     public function update(Request $request, $id)
-    {
-        $contact = Contact::findOrFail($id);
-        
-        // Valida os dados de entrada
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-        ]);
-        
-        // Atualiza os dados do contato com os dados fornecidos
-        $contact->update($validatedData);
+    {   
+    $contact = Contact::findOrFail($id);
 
-        return redirect()->route('contacts.index')->with('success', 'Contato atualizado com sucesso.');
-    }
+    // Atualiza os dados do contato com os dados fornecidos
+    $contact->update($request->all());
+
+    return redirect()->route('contacts.index')->with('success', 'Contato atualizado com sucesso.');
+}
+
 }
