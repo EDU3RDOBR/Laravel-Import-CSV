@@ -44,3 +44,4 @@ php artisan migrate --seed
 Isso é tudo: inicie a URL principal.
 
 # Principal
+# Principal
